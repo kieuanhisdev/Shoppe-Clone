@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { getRules, type FormData } from '../../utils/rules'
+import Input from '../../components/Input/Input'
 
 export default function Login() {
   const {
@@ -24,7 +25,7 @@ export default function Login() {
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='p-10 rounded bg-white shadow-sm' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Dang nhap</div>
-              <div className='mt-8'>
+              {/* <div className='mt-8'>
                 <input
                   type='email'
                   className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
@@ -32,8 +33,17 @@ export default function Login() {
                   {...register('email', rules.email)}
                 />
                 <div className='mt-1 text-red-600 min-h-[1.25rem] text-sm'>{errors.email?.message}</div>
-              </div>
-              <div className='mt-2'>
+              </div> */}
+              <Input<FormData>
+                type='email'
+                placeholder='Email'
+                className='mt-8'
+                name='email'
+                register={register}
+                rules={rules.email}
+                errorMessage={errors.email?.message}
+              />
+              {/* <div className='mt-2'>
                 <input
                   type='password'
                   autoComplete='on'
@@ -42,7 +52,17 @@ export default function Login() {
                   {...register('password', rules.password)}
                 />
                 <div className='mt-1 text-red-600 min-h-[1.25rem] text-sm'>{errors.password?.message}</div>
-              </div>
+              </div> */}
+              <Input<FormData>
+                type='password'
+                placeholder='Password'
+                className='mt-2'
+                name='password'
+                register={register}
+                rules={rules.password}
+                errorMessage={errors.password?.message}
+                autoComplete='on'
+              />
               <div className='mt-2'>
                 <button
                   type='submit'
